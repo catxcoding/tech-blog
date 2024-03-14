@@ -1,0 +1,55 @@
+{{> navbar}}
+
+<div class="card m-2" data-id="{{postData.id}}" id="userPost">
+  <div class="card-header fs-3">
+    <a>{{postData.title}} by {{postData.user.username}}</a>
+  </div>
+  <div class="card-body">
+    <h4 class="fs-4 mb-5">{{postData.content}}</h4>
+    <hr>
+    <small>Created: {{postData.createdAt}}</small>
+  </div>
+  <div class="card-footer my-2">
+    {{> editPost}}
+  </div>
+</div>
+
+<div class="card m-2">
+  <div class="card-header fs-3">
+    Leave a comment:
+  </div>
+  <div class="card-body">
+    <form class="m-3" id="createCommentForm">
+      <div class="mb-3">
+        <textarea rows="5" cols="60" type="text" class="form-control" id="commentContentInput"
+          placeholder="Post Comment"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Comment</button>
+    </form>
+  </div>
+</div>
+
+<div class="card m-2" id="commentCard">
+  <div class="card-header fs-3">
+    Comments
+  </div>
+  <div class="card-body">
+    {{#each commentData as |comments|}}
+    <div class="card my-3">
+      <div class="card-header fs-4">{{comments.user.username}} commented</div>
+      <div class="card-body">
+        <h5 class="fs-5">{{comments.comment}}</h5>
+        <hr>
+        <small>Created: {{comments.createdAt}}</small>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+{{> bootstrapjs}}
+{{> axios}}
+
+<script src="./js/comment.js"></script>
+<script src="./js/updatePost.js"></script>
+<script src="./js/deletePost.js"></script>

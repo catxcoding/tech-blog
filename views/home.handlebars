@@ -1,0 +1,25 @@
+{{> navbar }}
+
+<header class="m-5">
+  <h1 class="text-center text-light">Tech Blog</h1>
+  <h5 class="text-center text-light">A simple, sleek, and personable blog with everything concerning technology!</h5>
+</header>
+
+<div class="card m-5">
+<div class="card-header text-center text-light fs-2">Latest posts</div> 
+  <div class="card-body">
+    {{#each posts as |post|}}
+      <div class="card m-2">
+        <div class="card-header fs-3">
+          <a href="/{{post.id}}">{{post.title}} by {{post.user.username}}</a>
+        </div>
+        <div class="card-body">
+          <h4 class="fs-4">{{post.content}}</h4>
+          <small>Created: {{post.createdAt}}</small>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+{{> bootstrapjs}}

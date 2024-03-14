@@ -1,0 +1,46 @@
+{{> navbar}}
+
+<div class="card m-5" id="createPostCard">
+  <div class="card-header fs-2">
+    New Post
+  </div>
+  <div class="card-body">
+    <form class="m-3" id="createPostForm">
+      <div class="mb-3">
+        <label for="postTitleInput" class="form-label">Post Title</label>
+        <input type="text" class="form-control" id="postTitleInput" placeholder="Post Title">
+      </div>
+      <div class="mb-3">
+        <textarea rows="5" cols="60" type="text" class="form-control" id="postContentInput" placeholder="Post Content"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Create Blog Post</button>
+    </form>
+  </div>
+</div>
+
+<div class="card m-5" id="userPostCard">
+  <div class="card-header fs-2">
+    Your Posts
+  </div>
+  <div class="card-body" id="userPostCardBody">
+    {{#each posts as |post|}}
+      <div class="card m-2">
+        <div class="card-header fs-3">
+          <a href="/{{post.id}}">{{post.title}}</a>
+        </div>
+        <div class="card-body">
+          <h4 class="fs-4">{{post.content}}</h4>
+          <small>Created: {{post.createdAt}}</small>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<div class="m-5">
+  {{> logout}}
+</div>
+
+{{> axios}}
+{{> bootstrapjs}}
+<script src="./js/createPost.js"></script>
