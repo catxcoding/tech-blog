@@ -1,17 +1,15 @@
-require("dotenv").config({ path: '.env' });
-
-
+require("dotenv").config();
 const Sequelize = require("sequelize");
+const url = require('url');
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASS,
-  {
-    host: process.env.DB_HOST,
-    dialect: process.env.DB_DIALECT,
-    port: 3306,
-  }
-);
+const dbUrl = process.env.CLEARDB_DATABASE_URL;
+const parsedUrl = url.parse(dbUrl);
+const [username, password] = parsedUrl.auth.split(':');
+
+const sequelize = new Sequelize(parsedUrl.pathname.slice(1), username, password, {
+  host: parsedUrl.hostname,
+  dialect: 'mysql',
+  port: parsedUrl.port || 3306,
+});
 
 module.exports = sequelize;
