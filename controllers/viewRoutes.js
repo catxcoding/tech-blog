@@ -1,7 +1,7 @@
+const { User, Post, Comment } = require('../models/Index.js');
 const router = require("express").Router();
 const axios = require("axios");
 const withAuth = require("../utils/auth");
-const { Post, User, Comment } = require("../models");
 
 router.get("/", async (req, res) => {
   try {
