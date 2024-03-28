@@ -29,6 +29,13 @@ This application is deployed on Heroku. You can view the live application at [Te
 - **Comment System**: Readers can comment on posts, fostering a community discussion.
 - **Responsive Design**: Ensures a seamless experience across various devices and screen sizes.
 
+## Screenshots
+![](Assets/images/HOME.png)
+![](<Assets/images/LOG IN.png>)
+![](<Assets/images/NEW POST.png>)
+![](Assets/images/RECENT.png)
+
+
 ## Getting Started
 
 To get a local copy up and running, follow these simple steps.
